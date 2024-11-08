@@ -21,6 +21,10 @@ const connection = net.createConnection(2000, "127.0.0.1", () => {
 		if(offset === bufferSize / 4 / 2 - 2) {
 			connection.write(buffer);
 
+			console.log(buffer);
+
+			console.log(vect[0], vect[1]);
+
 			offset = 0;
 		}
 
@@ -52,9 +56,7 @@ const connection = net.createConnection(2000, "127.0.0.1", () => {
 		}
 
 		buffer.writeFloatLE(vect[0], offset * 4 * 2);
-		buffer.writeFloatLE(vect[1], offset * 4 * 2 + 8);
-
-		console.log(offset, bufferSize / 4 / 2);
+		buffer.writeFloatLE(vect[0], offset * 4 * 2 + 4);
 
 		offset++;
 	}
